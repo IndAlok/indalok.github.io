@@ -1,0 +1,74 @@
+name: Apply site config
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Write site-config.json from secrets
+        env:
+          FORMSPREE_ID: ${{ secrets.FORMSPREE_ID }}
+          NEXT_PUBLIC_FORMSPREE_ID: ${{ secrets.NEXT_PUBLIC_FORMSPREE_ID }}
+          GOATCOUNTER_URL: ${{ secrets.GOATCOUNTER_URL }}
+          NEXT_PUBLIC_GOATCOUNTER_URL: ${{ secrets.NEXT_PUBLIC_GOATCOUNTER_URL }}
+        run: |
+          python3 <<'PY'
+          import json, os, pathlib, sys
+
+          def secret(*names: str) -> str:
+              for name in names:
+                  value = os.environ.get(name, "").strip()
+                  if value:
+                      return value
+              return ""
+
+          formspree = secret("FORMSPREE_ID", "NEXT_PUBLIC_FORMSPREE_ID")
+          goatcounter = secret("GOATCOUNTER_URL", "NEXT_PUBLIC_GOATCOUNTER_URL")
+          if not formspree and not goatcounter:
+              print("No Formspree/GoatCounter secrets set; leaving site-config.json unchanged")
+              sys.exit(0)
+
+          path = pathlib.Path("site-config.json")
+          existing = {}
+          if path.exists():
+              try:
+                  loaded = json.loads(path.read_text())
+                  if isinstance(loaded, dict):
+                      existing = loaded
+              except json.JSONDecodeError:
+                  existing = {}
+
+          config = {
+              "formspreeId": formspree or str(existing.get("formspreeId") or "").strip(),
+              "goatcounterUrl": goatcounter or str(existing.get("goatcounterUrl") or "").strip(),
+          }
+          path.write_text(json.dumps(config, indent=2) + "\n")
+          print("Wrote site-config.json")
+          PY
+
+      - name: Commit if changed
+        run: |
+          if [[ ! -f site-config.json ]]; then
+            echo "No site-config.json to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site-config.json
+          if git diff --staged --quiet; then
+            echo "No config changes"
+          else
+            git commit -m "chore: apply site config from secrets"
+            git push
+          fi

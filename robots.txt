@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://indalok.github.io
+Sitemap: https://indalok.github.io/sitemap.xml
