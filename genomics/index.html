@@ -3,97 +3,246 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dataset demonstration links — When EIIP Goes Blind</title>
+<title>Dataset demonstration — When EIIP Goes Blind</title>
 <style>
-  :root { --navy:#0b2a4a; --navy2:#103c63; --teal:#2a9d8f; --ink:#1c2733; --mut:#5a6b7a; --bg:#eef3f7; --line:#d5dee6; }
+  :root { --navy:#0b2a4a; --navy2:#103c63; --teal:#2a9d8f; --tealDk:#207a6e; --ink:#1c2733; --mut:#54687a; --bg:#eef3f7; --line:#d5dee6; --soft:#f2f7fa; }
   * { box-sizing:border-box; }
   body { margin:0; font-family:"Segoe UI", Carlito, Calibri, Arial, sans-serif; background:var(--bg); color:var(--ink); }
-  header { background:var(--navy); color:#fff; padding:34px 20px 26px; }
-  .wrap { max-width:860px; margin:0 auto; }
-  header h1 { font-size:26px; line-height:1.3; margin:0 0 8px; }
+  .wrap { max-width:920px; margin:0 auto; }
+  header { background:var(--navy); color:#fff; padding:32px 20px 24px; }
+  header h1 { font-size:25px; line-height:1.3; margin:0 0 8px; }
   header p { margin:0; color:#bcd2e4; font-size:15.5px; }
-  header .proj { color:var(--teal); font-weight:700; margin-top:10px; font-size:15px; }
-  main { padding:22px 20px 10px; }
-  .card { display:block; background:#fff; border:1px solid var(--line); border-left:6px solid var(--teal);
-          border-radius:10px; padding:16px 18px; margin:0 0 14px; text-decoration:none; color:var(--ink);
-          box-shadow:0 1px 3px rgba(11,42,74,.08); }
-  .card:hover { border-left-color:var(--navy); box-shadow:0 2px 8px rgba(11,42,74,.16); }
+  header .proj { color:#7fd1c0; font-weight:700; margin-top:10px; font-size:15px; }
+  .stats { display:flex; flex-wrap:wrap; gap:10px; padding:16px 20px 2px; }
+  .stat { background:var(--navy2); color:#fff; border-radius:8px; padding:10px 14px; flex:1 1 140px; }
+  .stat b { display:block; font-size:20px; }
+  .stat span { font-size:12.5px; color:#bcd2e4; }
+  main { padding:16px 20px 6px; }
+  .card { background:#fff; border:1px solid var(--line); border-left:6px solid var(--teal);
+          border-radius:10px; padding:18px 20px; margin:0 0 16px; box-shadow:0 1px 3px rgba(11,42,74,.08); }
   .num { display:inline-block; background:var(--navy); color:#fff; font-weight:700; border-radius:50%;
          width:28px; height:28px; line-height:28px; text-align:center; font-size:15px; margin-right:10px; vertical-align:2px; }
-  .card h2 { display:inline; font-size:19px; color:var(--navy); }
-  .card p { margin:8px 0 0 38px; font-size:15px; color:var(--ink); line-height:1.45; }
-  .card .show { margin:6px 0 0 38px; font-size:13.5px; color:var(--mut); }
-  .card .dl { margin:6px 0 0 38px; font-size:13.5px; }
-  .card .dl a { color:var(--teal); font-weight:700; text-decoration:none; }
-  .card .dl a:hover { text-decoration:underline; }
-  footer { padding:6px 20px 30px; color:var(--mut); font-size:14px; }
+  .card h2 { display:inline; font-size:19.5px; color:var(--navy); }
+  .card h2 a { color:var(--navy); text-decoration:none; }
+  .card h2 a:hover { text-decoration:underline; }
+  .open { float:right; background:var(--teal); color:#fff; font-weight:700; font-size:13.5px;
+          padding:7px 13px; border-radius:6px; text-decoration:none; }
+  .open:hover { background:var(--tealDk); }
+  .sec { margin:13px 0 0 38px; }
+  .sec h3 { margin:0 0 4px; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--tealDk); }
+  .sec p, .sec li { font-size:15px; line-height:1.5; }
+  .sec p { margin:0; }
+  .sec ul { margin:0; padding-left:18px; }
+  .sec li { margin:2px 0; }
+  .say { background:var(--soft); border:1px dashed var(--teal); border-radius:8px; padding:9px 12px; margin:13px 0 0 38px; font-size:14.5px; line-height:1.5; }
+  .say b { color:var(--navy); }
+  .dl { margin:10px 0 0 38px; font-size:14px; }
+  .dl a { color:var(--tealDk); font-weight:700; text-decoration:none; }
+  .dl a:hover { text-decoration:underline; }
+  code { background:var(--soft); padding:1px 5px; border-radius:4px; font-size:13.5px; }
+  .note { background:#fff; border:1px solid var(--line); border-left:6px solid var(--navy); border-radius:10px; padding:16px 20px; margin:0 0 16px; }
+  .note h2 { font-size:17px; color:var(--navy); margin:0 0 6px; }
+  .note p { font-size:15px; line-height:1.5; margin:0; }
+  footer { padding:4px 20px 30px; color:var(--mut); font-size:14px; line-height:1.6; }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
     <h1>Prediction of cancer-driving synonymous mutations using spectral / FFT-based features</h1>
-    <p>Dataset demonstration links, in the order to open them.</p>
-    <p class="proj">Project: When EIIP Goes Blind · Computational Genomics and Proteomics</p>
+    <p>Live dataset demonstration. Every resource below is public and free, and together they are the complete dataset of this project. Open the cards in order, 1 to 8.</p>
+    <p class="proj">Project: When EIIP Goes Blind · Computational Genomics and Proteomics · Group research project</p>
   </div>
 </header>
+
+<div class="stats wrap">
+  <div class="stat"><b>4,824</b><span>labelled variants in total</span></div>
+  <div class="stat"><b>3,826</b><span>training variants (1,913 + / 1,913 −)</span></div>
+  <div class="stat"><b>998</b><span>test variants (499 + / 499 −)</span></div>
+  <div class="stat"><b>2,699</b><span>of the variants are C to T changes</span></div>
+  <div class="stat"><b>hg19</b><span>one genome build throughout, never mixed</span></div>
+</div>
+
 <main>
   <div class="wrap">
 
-    <a class="card" href="https://doi.org/10.1371/journal.pcbi.1012744" target="_blank" rel="noopener">
-      <span class="num">1</span><h2>EPEL paper</h2>
-      <p>The paper this project builds on. EPEL, an ensemble predictor for driver synonymous mutations, PLOS Computational Biology, 2025.</p>
-      <p class="show">Show: title and abstract only.</p>
-    </a>
+    <div class="card">
+      <span class="num">1</span><h2>EPEL paper, the study this project builds on</h2>
+      <a class="open" href="https://doi.org/10.1371/journal.pcbi.1012744" target="_blank" rel="noopener">Open paper</a>
+      <div class="sec"><h3>What it is</h3>
+        <p>Bi and co-workers, "Ensemble learning-based predictor for driver synonymous mutation with sequence representation", PLOS Computational Biology, 2025. EPEL is the current best predictor of which synonymous (silent) mutations drive cancer.</p></div>
+      <div class="sec"><h3>How it connects to our project</h3>
+        <ul>
+          <li>Our dataset is EPEL's dataset, taken exactly as published. Nothing is re-collected or re-labelled by us.</li>
+          <li>EPEL is also the baseline. It encodes DNA with EIIP values and combines five tree models (CatBoost, random forest, gradient boosting, AdaBoost, XGBoost) with logistic regression stacking.</li>
+          <li>Our project changes one thing only: the features. We test whether FFT period-3 spectral features do better, per mutation class.</li>
+          <li>We checked the full text of the paper: FFT, Fourier and spectral methods appear zero times. That gap is our project.</li>
+        </ul></div>
+      <div class="sec"><h3>What to demonstrate</h3>
+        <ul>
+          <li>Show the title page and abstract.</li>
+          <li>Point at the reported performance: independent test AUC about 0.86 and AUPR about 0.88.</li>
+        </ul></div>
+      <div class="say"><b>Say:</b> "This is the paper we build on. We use its data as it is, and we test the one thing it never tried, the frequency spectrum of the sequence."</div>
+    </div>
 
-    <a class="card" href="https://github.com/maxcine-cloud/EPEL" target="_blank" rel="noopener">
-      <span class="num">2</span><h2>EPEL GitHub repository</h2>
-      <p>The authors' public code and data repository. The README confirms the data is COSMIC and the model combines five tree-based models.</p>
-      <p class="show">Show: the README and the folder list, then the data folder.</p>
-    </a>
+    <div class="card">
+      <span class="num">2</span><h2>EPEL GitHub repository, where our dataset lives</h2>
+      <a class="open" href="https://github.com/maxcine-cloud/EPEL" target="_blank" rel="noopener">Open repository</a>
+      <div class="sec"><h3>What it is</h3>
+        <p>The authors' official public repository: source code, trained models, the data files and the published prediction scores. Public, no login, no access request.</p></div>
+      <div class="sec"><h3>How it is our dataset source</h3>
+        <ul>
+          <li>The <code>data</code> folder holds the two variant list files we use, shown in cards 3 and 4.</li>
+          <li>The README states the data is COSMIC and describes the five-model ensemble, matching the paper.</li>
+          <li>The <code>out/ulti_data</code> folder holds EPEL's own scores for the test set (<code>test_score.vcf</code>), which we can compare our scores against.</li>
+          <li>Because the source is public, every number in our project can be checked by anyone from this page.</li>
+        </ul></div>
+      <div class="sec"><h3>What to demonstrate</h3>
+        <ul>
+          <li>Scroll the README: the data line and the model description.</li>
+          <li>Open the <code>data</code> folder and show the two files with their sizes, about 92 KB (train) and 24 KB (test).</li>
+        </ul></div>
+      <div class="say"><b>Say:</b> "Our dataset is not a private copy. It is these two files in the authors' own repository, and anyone can download them and repeat our counts."</div>
+    </div>
 
-    <span class="card">
-      <span class="num">3</span><h2><a href="https://github.com/maxcine-cloud/EPEL/blob/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_test_close7.txt" target="_blank" rel="noopener" style="color:var(--navy); text-decoration:none;">Test dataset: id_test_close7.txt</a></h2>
-      <p>The test set itself. 998 labelled synonymous variants, 499 positive and 499 negative. Columns: chromosome, position, reference base, alternate base, gene name, label (1 = driver, 0 = passenger).</p>
-      <p class="show">Show: read one row aloud, for example chr 5, 43245922, C to T, NIM1K, label 1.</p>
-      <p class="dl"><a href="https://raw.githubusercontent.com/maxcine-cloud/EPEL/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_test_close7.txt">Download the raw file</a></p>
-    </span>
+    <div class="card">
+      <span class="num">3</span><h2>Test dataset: id_test_close7.txt</h2>
+      <a class="open" href="https://github.com/maxcine-cloud/EPEL/blob/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_test_close7.txt" target="_blank" rel="noopener">Open file</a>
+      <div class="sec"><h3>What it is</h3>
+        <p>EPEL's independent test list, derived from COSMIC v95. 998 synonymous variants plus a header row, balanced 499 positive and 499 negative.</p></div>
+      <div class="sec"><h3>Format, column by column</h3>
+        <ul>
+          <li><code>chr</code> and <code>pos</code>: chromosome and position on hg19 (GRCh37).</li>
+          <li><code>ref</code> and <code>alt</code>: the reference base and the mutated base.</li>
+          <li><code>Gene name</code>: the gene the variant sits in.</li>
+          <li>Last column, the label: <b>1</b> means the variant appeared in at least 7 tumours in COSMIC v95 (recurrence r ≥ 7, likely driver). <b>0</b> means it appeared exactly once (r = 1, likely passenger). EPEL paired each driver with a nearby passenger and removed near-duplicate sequences, which is why the set is balanced.</li>
+        </ul></div>
+      <div class="sec"><h3>How it is our dataset</h3>
+        <ul>
+          <li>This is our held-out test set for the direct comparison with EPEL (scheme S1).</li>
+          <li>Our own check on this public file: 152 of its genes also appear in the training list, covering 331 of these 998 rows. Our corrected test set (scheme S2) removes those rows, leaving 667. Our main result (scheme S3) re-splits all 4,824 variants so no gene appears on both sides.</li>
+        </ul></div>
+      <div class="sec"><h3>What to demonstrate</h3>
+        <ul>
+          <li>Read the header row, then one positive C to T row aloud: chr 5, position 43,245,922, C to T, gene NIM1K, label 1.</li>
+          <li>Read one more famous one: chr 14, position 105,239,894, C to T, gene AKT1, label 1.</li>
+          <li>Read one negative row: chr 2, position 44,153,083, A to T, gene LRPPRC, label 0.</li>
+          <li>Scroll through the file to show the volume, and point out how many rows are C to T changes.</li>
+        </ul></div>
+      <div class="say"><b>Say:</b> "Every line is one silent mutation with its label. The labels are tumour counts from COSMIC, turned into 1 and 0 by EPEL's rule. This file is our test set."</div>
+      <p class="dl"><a href="https://raw.githubusercontent.com/maxcine-cloud/EPEL/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_test_close7.txt">Download the raw test file</a></p>
+    </div>
 
-    <span class="card">
-      <span class="num">4</span><h2><a href="https://github.com/maxcine-cloud/EPEL/blob/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_train_close7.txt" target="_blank" rel="noopener" style="color:var(--navy); text-decoration:none;">Training dataset: id_train_close7.txt</a></h2>
-      <p>The training set, same format. 3,826 labelled variants, balanced the same way. Together with the test file: 4,824 variants.</p>
-      <p class="show">Show: the file and its size, no need to read rows.</p>
-      <p class="dl"><a href="https://raw.githubusercontent.com/maxcine-cloud/EPEL/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_train_close7.txt">Download the raw file</a></p>
-    </span>
+    <div class="card">
+      <span class="num">4</span><h2>Training dataset: id_train_close7.txt</h2>
+      <a class="open" href="https://github.com/maxcine-cloud/EPEL/blob/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_train_close7.txt" target="_blank" rel="noopener">Open file</a>
+      <div class="sec"><h3>What it is</h3>
+        <p>EPEL's training list, same source (COSMIC v95) and same format as the test file. 3,826 synonymous variants plus a header row, balanced 1,913 positive and 1,913 negative.</p></div>
+      <div class="sec"><h3>How it is our dataset</h3>
+        <ul>
+          <li>Together with the test file this is our complete dataset: 4,824 labelled variants.</li>
+          <li>The training list covers 1,583 genes, the test list 487 genes.</li>
+          <li>Across both files, 2,699 of the 4,824 variants are C to T changes, the class our project focuses on, because the EIIP encoding can barely see it (C and T differ by only 0.0005 in EIIP value).</li>
+          <li>In our main evaluation (scheme S3) both files are pooled and split by gene, so a gene is never in training and test at the same time.</li>
+        </ul></div>
+      <div class="sec"><h3>What to demonstrate</h3>
+        <ul>
+          <li>Open the file and show the columns are identical to the test file.</li>
+          <li>Show the file size and length, no need to read rows here.</li>
+        </ul></div>
+      <div class="say"><b>Say:</b> "Same format, the training half. Train plus test is 4,824 labelled variants, and that is the entire dataset of this project."</div>
+      <p class="dl"><a href="https://raw.githubusercontent.com/maxcine-cloud/EPEL/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_train_close7.txt">Download the raw training file</a></p>
+    </div>
 
-    <a class="card" href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position=chr17:41245416-41245516" target="_blank" rel="noopener">
-      <span class="num">5</span><h2>One variant in the genome: UCSC Browser</h2>
-      <p>A real row from the test set in the UCSC Genome Browser on hg19: BRCA1, chr17 position 41,245,466, G to A, label 1, shown in a window exactly 101 bases wide.</p>
-      <p class="show">Show: the 101 bp window, then zoom out once to the BRCA1 gene.</p>
-    </a>
+    <div class="card">
+      <span class="num">5</span><h2>One variant in the genome: UCSC Genome Browser</h2>
+      <a class="open" href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position=chr17:41245416-41245516" target="_blank" rel="noopener">Open browser view</a>
+      <div class="sec"><h3>What it is</h3>
+        <p>One actual row of the test file, shown in the UCSC Genome Browser on hg19: chromosome 17, position 41,245,466, G to A, in the gene BRCA1, label 1. The view is exactly 101 bases wide (chr17:41,245,416 to 41,245,516), centred on the variant.</p></div>
+      <div class="sec"><h3>How it connects to our dataset</h3>
+        <ul>
+          <li>Every row of the two files becomes exactly this: one position in the hg19 genome, one reference base, one gene.</li>
+          <li>Our pipeline cuts this 101 base window out of the reference genome for every variant, encodes it three ways (EIIP, Voss, Z-curve) for the reference and the mutated base, and runs the FFT.</li>
+          <li>The window is 101 bases because that is EPEL's window, so the comparison changes only the features, not the input.</li>
+        </ul></div>
+      <div class="sec"><h3>What to demonstrate</h3>
+        <ul>
+          <li>Point at the centre of the window: the variant position and the reference base G.</li>
+          <li>Zoom out once to show the BRCA1 gene around the position.</li>
+          <li>Point out the assembly is hg19 (Feb 2009, GRCh37), the same build as the dataset coordinates.</li>
+        </ul></div>
+      <div class="say"><b>Say:</b> "This is what one data point actually is. A single letter in the genome, in a known cancer gene, and the 101 bases around it are the exact input to our method."</div>
+    </div>
 
-    <a class="card" href="https://cancer.sanger.ac.uk/cosmic" target="_blank" rel="noopener">
-      <span class="num">6</span><h2>COSMIC</h2>
-      <p>The Catalogue of Somatic Mutations in Cancer, where the label counts come from. EPEL counted recurrences in COSMIC v95: at least 7 tumours means positive, exactly 1 means negative.</p>
-      <p class="show">Show: search AKT1. Full downloads need a free registration, the derived lists on GitHub (links 3 and 4) are what the project uses.</p>
-    </a>
+    <div class="card">
+      <span class="num">6</span><h2>COSMIC, where the labels come from</h2>
+      <a class="open" href="https://cancer.sanger.ac.uk/cosmic" target="_blank" rel="noopener">Open COSMIC</a>
+      <div class="sec"><h3>What it is</h3>
+        <p>The Catalogue of Somatic Mutations in Cancer, maintained by the Wellcome Sanger Institute. It is the largest curated record of mutations found in human tumours. EPEL used COSMIC version 95.</p></div>
+      <div class="sec"><h3>How it is our dataset's origin</h3>
+        <ul>
+          <li>Our labels are not invented or simulated. Each label is a count of real tumours in COSMIC v95 that carry that synonymous variant.</li>
+          <li>EPEL's labelling rule on those counts: recurrence at least 7 becomes label 1, recurrence exactly 1 becomes label 0, and each positive was paired with a nearby negative.</li>
+          <li>Full COSMIC downloads need a free registration, and the download page lists recent releases. We do not need them, because EPEL published the exact v95-derived lists on GitHub (cards 3 and 4).</li>
+        </ul></div>
+      <div class="sec"><h3>What to demonstrate</h3>
+        <ul>
+          <li>Search for AKT1 in the COSMIC search box and show the gene page with its recorded mutations.</li>
+          <li>If asked, open the downloads page and show that datasets are distributed per release.</li>
+        </ul></div>
+      <div class="say"><b>Say:</b> "The labels start here. A variant seen in seven or more tumours is our positive, a variant seen once is our negative. Real tumour data, counted by EPEL from COSMIC v95."</div>
+    </div>
 
-    <a class="card" href="https://hgdownload.soe.ucsc.edu/downloads.html" target="_blank" rel="noopener">
+    <div class="card">
       <span class="num">7</span><h2>hg19 reference genome: UCSC downloads</h2>
-      <p>The reference sequence source. The file hg19.fa.gz (about 900 MB) sits under goldenPath/hg19/bigZips. The pipeline downloads it once and cuts the 101 bp windows from it.</p>
-      <p class="show">Show: the Feb 2009 (GRCh37/hg19) section only. Do not start the download.</p>
-    </a>
+      <a class="open" href="https://hgdownload.soe.ucsc.edu/downloads.html" target="_blank" rel="noopener">Open downloads page</a>
+      <div class="sec"><h3>What it is</h3>
+        <p>The UCSC download server. The human reference genome for the GRCh37 (hg19) build is the file <code>hg19.fa.gz</code>, in the folder goldenPath/hg19/bigZips, about 900 MB compressed.</p></div>
+      <div class="sec"><h3>How it is our dataset</h3>
+        <ul>
+          <li>The two variant lists give only positions and base changes. The actual DNA letters come from this one file.</li>
+          <li>Our pipeline downloads it once and cuts the 101 base window around each of the 4,824 variants from it.</li>
+          <li>Hard rule of the project: everything stays on hg19. Mixing in hg38 coordinates would silently shift positions and break the codon phase, so no other build is used anywhere.</li>
+        </ul></div>
+      <div class="sec"><h3>What to demonstrate</h3>
+        <ul>
+          <li>Show the Feb 2009 (GRCh37/hg19) section of the downloads page.</li>
+          <li>Do not start the download during the meeting, the file is about 900 MB.</li>
+        </ul></div>
+      <div class="say"><b>Say:</b> "The lists give positions, this file gives the letters. Every window we analyse is cut from this single reference genome, hg19 only."</div>
+    </div>
 
-    <a class="card" href="https://www.gencodegenes.org/human/grch37_mapped_releases.html" target="_blank" rel="noopener">
-      <span class="num">8</span><h2>GENCODE, GRCh37-mapped releases</h2>
-      <p>The gene annotation source. This page lists release 50 mapped to GRCh37 as 50lift37. It provides the gene, the strand and the codon phase for every variant.</p>
-      <p class="show">Show: the release 50 row in the table.</p>
-    </a>
+    <div class="card">
+      <span class="num">8</span><h2>GENCODE, GRCh37-mapped releases (50lift37)</h2>
+      <a class="open" href="https://www.gencodegenes.org/human/grch37_mapped_releases.html" target="_blank" rel="noopener">Open GENCODE page</a>
+      <div class="sec"><h3>What it is</h3>
+        <p>GENCODE is the reference gene annotation for the human genome. This page lists the releases mapped back to the older GRCh37 build. Release 50 appears in the table as 50lift37, which is the version we use.</p></div>
+      <div class="sec"><h3>How it is our dataset</h3>
+        <ul>
+          <li>From this annotation we take, for every variant: which gene it is in, which strand the gene is on, and the codon phase of the position.</li>
+          <li>The strand matters directly to our question: a C to T change is only counted on the gene's coding strand, because the same change read on the other strand is a G to A.</li>
+          <li>When a variant overlaps several transcripts, we pick one in a fixed order: MANE first, then canonical, then APPRIS, then the longest coding sequence.</li>
+        </ul></div>
+      <div class="sec"><h3>What to demonstrate</h3>
+        <ul>
+          <li>Show the table on this page and point at the release 50 row, marked 50lift37.</li>
+          <li>That is the last of the four data sources. The dataset is now fully shown.</li>
+        </ul></div>
+      <div class="say"><b>Say:</b> "And the annotation comes from GENCODE 50lift37. It tells us the gene, the strand and the codon position for every variant, which the encoding step depends on."</div>
+    </div>
+
+    <div class="note">
+      <h2>If asked about the gene overlap</h2>
+      <p>We compared the gene name columns of the two public files on cards 3 and 4. 152 gene names appear in both files, and they cover 331 of the 998 test rows. EPEL's paper does not discuss this. Our evaluation handles it three ways: the original split for comparability (S1), the test set with those 331 rows removed, 667 left (S2), and a gene-grouped split of all 4,824 variants as the main result (S3), plus a chromosome hold-out stress test (S4).</p>
+    </div>
 
   </div>
 </main>
 <footer>
-  <div class="wrap">All resources are public and free. Labels from EPEL on GitHub, genome from UCSC, annotation from GENCODE, counts originally from COSMIC.</div>
+  <div class="wrap">
+    The dataset in one line: COSMIC v95 tumour counts, turned into labels by EPEL and published on GitHub, windows cut from the hg19 reference genome (UCSC), gene, strand and codon phase from GENCODE 50lift37. Total 4,824 labelled synonymous variants. Every source is public and free.
+  </div>
 </footer>
 </body>
 </html>
