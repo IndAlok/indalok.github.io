@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dataset demonstration links — When EIIP Goes Blind</title>
+<style>
+  :root { --navy:#0b2a4a; --navy2:#103c63; --teal:#2a9d8f; --ink:#1c2733; --mut:#5a6b7a; --bg:#eef3f7; --line:#d5dee6; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Segoe UI", Carlito, Calibri, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header { background:var(--navy); color:#fff; padding:34px 20px 26px; }
+  .wrap { max-width:860px; margin:0 auto; }
+  header h1 { font-size:26px; line-height:1.3; margin:0 0 8px; }
+  header p { margin:0; color:#bcd2e4; font-size:15.5px; }
+  header .proj { color:var(--teal); font-weight:700; margin-top:10px; font-size:15px; }
+  main { padding:22px 20px 10px; }
+  .card { display:block; background:#fff; border:1px solid var(--line); border-left:6px solid var(--teal);
+          border-radius:10px; padding:16px 18px; margin:0 0 14px; text-decoration:none; color:var(--ink);
+          box-shadow:0 1px 3px rgba(11,42,74,.08); }
+  .card:hover { border-left-color:var(--navy); box-shadow:0 2px 8px rgba(11,42,74,.16); }
+  .num { display:inline-block; background:var(--navy); color:#fff; font-weight:700; border-radius:50%;
+         width:28px; height:28px; line-height:28px; text-align:center; font-size:15px; margin-right:10px; vertical-align:2px; }
+  .card h2 { display:inline; font-size:19px; color:var(--navy); }
+  .card p { margin:8px 0 0 38px; font-size:15px; color:var(--ink); line-height:1.45; }
+  .card .show { margin:6px 0 0 38px; font-size:13.5px; color:var(--mut); }
+  .card .dl { margin:6px 0 0 38px; font-size:13.5px; }
+  .card .dl a { color:var(--teal); font-weight:700; text-decoration:none; }
+  .card .dl a:hover { text-decoration:underline; }
+  footer { padding:6px 20px 30px; color:var(--mut); font-size:14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Prediction of cancer-driving synonymous mutations using spectral / FFT-based features</h1>
+    <p>Dataset demonstration links, in the order to open them.</p>
+    <p class="proj">Project: When EIIP Goes Blind · Computational Genomics and Proteomics</p>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+
+    <a class="card" href="https://doi.org/10.1371/journal.pcbi.1012744" target="_blank" rel="noopener">
+      <span class="num">1</span><h2>EPEL paper</h2>
+      <p>The paper this project builds on. EPEL, an ensemble predictor for driver synonymous mutations, PLOS Computational Biology, 2025.</p>
+      <p class="show">Show: title and abstract only.</p>
+    </a>
+
+    <a class="card" href="https://github.com/maxcine-cloud/EPEL" target="_blank" rel="noopener">
+      <span class="num">2</span><h2>EPEL GitHub repository</h2>
+      <p>The authors' public code and data repository. The README confirms the data is COSMIC and the model combines five tree-based models.</p>
+      <p class="show">Show: the README and the folder list, then the data folder.</p>
+    </a>
+
+    <span class="card">
+      <span class="num">3</span><h2><a href="https://github.com/maxcine-cloud/EPEL/blob/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_test_close7.txt" target="_blank" rel="noopener" style="color:var(--navy); text-decoration:none;">Test dataset: id_test_close7.txt</a></h2>
+      <p>The test set itself. 998 labelled synonymous variants, 499 positive and 499 negative. Columns: chromosome, position, reference base, alternate base, gene name, label (1 = driver, 0 = passenger).</p>
+      <p class="show">Show: read one row aloud, for example chr 5, 43245922, C to T, NIM1K, label 1.</p>
+      <p class="dl"><a href="https://raw.githubusercontent.com/maxcine-cloud/EPEL/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_test_close7.txt">Download the raw file</a></p>
+    </span>
+
+    <span class="card">
+      <span class="num">4</span><h2><a href="https://github.com/maxcine-cloud/EPEL/blob/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_train_close7.txt" target="_blank" rel="noopener" style="color:var(--navy); text-decoration:none;">Training dataset: id_train_close7.txt</a></h2>
+      <p>The training set, same format. 3,826 labelled variants, balanced the same way. Together with the test file: 4,824 variants.</p>
+      <p class="show">Show: the file and its size, no need to read rows.</p>
+      <p class="dl"><a href="https://raw.githubusercontent.com/maxcine-cloud/EPEL/3a5305a6b2847e97fc75e376ab0b38f75e8a292d/data/id_train_close7.txt">Download the raw file</a></p>
+    </span>
+
+    <a class="card" href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position=chr17:41245416-41245516" target="_blank" rel="noopener">
+      <span class="num">5</span><h2>One variant in the genome: UCSC Browser</h2>
+      <p>A real row from the test set in the UCSC Genome Browser on hg19: BRCA1, chr17 position 41,245,466, G to A, label 1, shown in a window exactly 101 bases wide.</p>
+      <p class="show">Show: the 101 bp window, then zoom out once to the BRCA1 gene.</p>
+    </a>
+
+    <a class="card" href="https://cancer.sanger.ac.uk/cosmic" target="_blank" rel="noopener">
+      <span class="num">6</span><h2>COSMIC</h2>
+      <p>The Catalogue of Somatic Mutations in Cancer, where the label counts come from. EPEL counted recurrences in COSMIC v95: at least 7 tumours means positive, exactly 1 means negative.</p>
+      <p class="show">Show: search AKT1. Full downloads need a free registration, the derived lists on GitHub (links 3 and 4) are what the project uses.</p>
+    </a>
+
+    <a class="card" href="https://hgdownload.soe.ucsc.edu/downloads.html" target="_blank" rel="noopener">
+      <span class="num">7</span><h2>hg19 reference genome: UCSC downloads</h2>
+      <p>The reference sequence source. The file hg19.fa.gz (about 900 MB) sits under goldenPath/hg19/bigZips. The pipeline downloads it once and cuts the 101 bp windows from it.</p>
+      <p class="show">Show: the Feb 2009 (GRCh37/hg19) section only. Do not start the download.</p>
+    </a>
+
+    <a class="card" href="https://www.gencodegenes.org/human/grch37_mapped_releases.html" target="_blank" rel="noopener">
+      <span class="num">8</span><h2>GENCODE, GRCh37-mapped releases</h2>
+      <p>The gene annotation source. This page lists release 50 mapped to GRCh37 as 50lift37. It provides the gene, the strand and the codon phase for every variant.</p>
+      <p class="show">Show: the release 50 row in the table.</p>
+    </a>
+
+  </div>
+</main>
+<footer>
+  <div class="wrap">All resources are public and free. Labels from EPEL on GitHub, genome from UCSC, annotation from GENCODE, counts originally from COSMIC.</div>
+</footer>
+</body>
+</html>
