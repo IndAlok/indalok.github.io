@@ -103,6 +103,7 @@
           <li>Scroll the README: the data line and the model description.</li>
           <li>Open the <code>data</code> folder and show the two files with their sizes, about 92 KB (train) and 24 KB (test).</li>
         </ul></div>
+      <p class="dl"><a href="https://github.com/maxcine-cloud/EPEL/tree/main/data" target="_blank" rel="noopener">Jump straight to the data folder</a></p>
       <div class="say"><b>Say:</b> "Our dataset is not a private copy. It is these two files in the authors' own repository, and anyone can download them and repeat our counts."</div>
     </div>
 
@@ -173,6 +174,7 @@
           <li>Point out the assembly is hg19 (Feb 2009, GRCh37), the same build as the dataset coordinates.</li>
         </ul></div>
       <div class="say"><b>Say:</b> "This is what one data point actually is. A single letter in the genome, in a known cancer gene, and the 101 bases around it are the exact input to our method."</div>
+      <p class="dl"><a href="https://api.genome.ucsc.edu/getData/sequence?genome=hg19;chrom=chr17;start=41245415;end=41245516" target="_blank" rel="noopener">See the exact 101 letters of this window (the centre letter, position 51, is G, matching the ref column)</a></p>
     </div>
 
     <div class="card">
@@ -188,15 +190,16 @@
         </ul></div>
       <div class="sec"><h3>What to demonstrate</h3>
         <ul>
-          <li>Search for AKT1 in the COSMIC search box and show the gene page with its recorded mutations.</li>
-          <li>If asked, open the downloads page and show that datasets are distributed per release.</li>
+          <li>Show the COSMIC homepage and say what the catalogue is. Note: the detailed gene pages now open only after a free login, so do not rely on searching AKT1 live. The working data demonstration is the GitHub lists on cards 3 and 4, which are the exact COSMIC v95 output.</li>
+          <li>If asked, open the downloads page (link below) and show that datasets are distributed per release.</li>
         </ul></div>
+      <p class="dl"><a href="https://cancer.sanger.ac.uk/cosmic/download" target="_blank" rel="noopener">COSMIC downloads page</a></p>
       <div class="say"><b>Say:</b> "The labels start here. A variant seen in seven or more tumours is our positive, a variant seen once is our negative. Real tumour data, counted by EPEL from COSMIC v95."</div>
     </div>
 
     <div class="card">
       <span class="num">7</span><h2>hg19 reference genome: UCSC downloads</h2>
-      <a class="open" href="https://hgdownload.soe.ucsc.edu/downloads.html" target="_blank" rel="noopener">Open downloads page</a>
+      <a class="open" href="https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/" target="_blank" rel="noopener">Open the hg19 folder</a>
       <div class="sec"><h3>What it is</h3>
         <p>The UCSC download server. The human reference genome for the GRCh37 (hg19) build is the file <code>hg19.fa.gz</code>, in the folder goldenPath/hg19/bigZips, about 900 MB compressed.</p></div>
       <div class="sec"><h3>How it is our dataset</h3>
@@ -207,17 +210,18 @@
         </ul></div>
       <div class="sec"><h3>What to demonstrate</h3>
         <ul>
-          <li>Show the Feb 2009 (GRCh37/hg19) section of the downloads page.</li>
-          <li>Do not start the download during the meeting, the file is about 900 MB.</li>
+          <li>The button above opens the exact hg19 folder, not the general downloads page. Point at the file <code>hg19.fa.gz</code> in the listing.</li>
+          <li>Do not click the file itself during the meeting, it starts a download of about 900 MB.</li>
         </ul></div>
       <div class="say"><b>Say:</b> "The lists give positions, this file gives the letters. Every window we analyse is cut from this single reference genome, hg19 only."</div>
+      <p class="dl"><a href="https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz">Direct link to hg19.fa.gz (downloads the file, do not click during the demo)</a></p>
     </div>
 
     <div class="card">
       <span class="num">8</span><h2>GENCODE, GRCh37-mapped releases (50lift37)</h2>
-      <a class="open" href="https://www.gencodegenes.org/human/grch37_mapped_releases.html" target="_blank" rel="noopener">Open GENCODE page</a>
+      <a class="open" href="https://www.gencodegenes.org/human/release_50lift37.html" target="_blank" rel="noopener">Open the release page</a>
       <div class="sec"><h3>What it is</h3>
-        <p>GENCODE is the reference gene annotation for the human genome. This page lists the releases mapped back to the older GRCh37 build. Release 50 appears in the table as 50lift37, which is the version we use.</p></div>
+        <p>GENCODE is the reference gene annotation for the human genome. The button above lands directly on the page for Human Release 50 mapped to GRCh37, the version called 50lift37, which is the exact annotation we use. Its first table row, "Comprehensive gene annotation", is the GTF file our pipeline reads.</p></div>
       <div class="sec"><h3>How it is our dataset</h3>
         <ul>
           <li>From this annotation we take, for every variant: which gene it is in, which strand the gene is on, and the codon phase of the position.</li>
@@ -226,7 +230,7 @@
         </ul></div>
       <div class="sec"><h3>What to demonstrate</h3>
         <ul>
-          <li>Show the table on this page and point at the release 50 row, marked 50lift37.</li>
+          <li>The page that opens is already the Release 50 (GRCh37) page. Point at the heading, then at the first GTF row, "Comprehensive gene annotation". That GTF download is the exact file the pipeline uses.</li>
           <li>That is the last of the four data sources. The dataset is now fully shown.</li>
         </ul></div>
       <div class="say"><b>Say:</b> "And the annotation comes from GENCODE 50lift37. It tells us the gene, the strand and the codon position for every variant, which the encoding step depends on."</div>
